@@ -27,7 +27,7 @@ namespace ProveriSlobodneKolicine
     internal class Program
     {
         static Application logikApp;
-        const string NAZIV_CHECKBOX = "Samo slobodna količina";
+        const string NAZIV_CHECKBOX = "Samo slobodna";
         static readonly string LogPath = Path.Combine(AppContext.BaseDirectory, "log.txt");
 
         [DllImport("user32.dll")] static extern bool SetForegroundWindow(IntPtr hWnd);
@@ -182,7 +182,7 @@ namespace ProveriSlobodneKolicine
 
         static Kontrola NadjiCheckbox(IntPtr dlgH) =>
             Deca(dlgH).FirstOrDefault(k => k.Klasa == "TCheckBox" &&
-                k.Tekst.Replace("&", "").StartsWith("Samo slobodna", StringComparison.OrdinalIgnoreCase));
+                k.Tekst.Replace("&", "").StartsWith(NAZIV_CHECKBOX, StringComparison.OrdinalIgnoreCase));
 
         static bool CheckboxVidljiv(IntPtr dlgH)
         {
